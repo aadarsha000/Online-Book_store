@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{book.name}}</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-2 mb-5">
+        <div class="col-lg-4 col-4">
+            <img src="{{book.image.url}}" class="img-fluid" alt="">
+        </div>
+        <div class="col-8">
+            <h3>{{book.name}}</h3>
+            <p>RS.{{book.price}}</p>
+            <p>Author: {{book.author}}</p>
+            <p>Publisher: {{book.publication}}</p>
+            <p>Edition: {{book.edition}}</p>
+            <p>Published date: {{book.published_date}}</p>
+            <p>Updated date: {{book.update_date}}</p>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="header text-center px-3">
+            <h4 class="border-bottom border-success border-3">Short description</h4>
+        </div>
+        <p>{{book.desc}}</p>
+    </div>
+</div>
+{% endblock content %}

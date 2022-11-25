@@ -65,3 +65,6 @@ header .navbar-brand{
 .page-footer a{
     color: #111;
 }
+.feature-product{
+    overflow-x: hidden;
+}

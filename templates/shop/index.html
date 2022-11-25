@@ -8,18 +8,15 @@
 {% block content %}
   <!-- nav -->
   <div class="row m-auto hero">
-    <div class="col-4">
+    <div class="col-lg-4 col-12">
         <ul class="list-group">
             <li class="list-group-item"><h4>Category</h3></li>
-            <li class="list-group-item"><a href="" class="nav-link active">FOOD</a></li>
-            <li class="list-group-item"><a href="" class="nav-link"></a>CLOTHES</li>
-            <li class="list-group-item"><a href="" class="nav-link"></a>ELECTRONIC</li>
-            <li class="list-group-item"><a href="" class="nav-link"></a>MOBILES</li>
-            <li class="list-group-item"><a href="" class="nav-link"></a>MOBILES</li>
-            <li class="list-group-item"><a href="" class="nav-link"></a>MOBILES</li>
+            {% for cat in category %}
+            <li class="list-group-item"><a href="" class="nav-link">{{cat.name}}</a></li>
+            {% endfor %}
         </ul>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-lg-8">
         <div class="banner">
             <img src="{% static 'assets/image/banner/banner.jpg' %}" class="img-fluid" alt="...">
         </div>
@@ -30,23 +27,27 @@
 
 <!-- feature product -->
 <div class="feature-product py-2 mt-3">
-    <div class="container">
+    
         <div>
             <h2 class="text-center border-bottom border-success border-3 py-1">
-            Featured Product
+            Latest Product
             </h2>
         </div>
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'assets/image/banner/banner.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">rs 500</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="row px-2">
+            {% for book in books %}
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card" style="width: 20rem;">
+                        <a href="{{book.get_absolute_url}}"><img src="{{book.image.url}}" class="card-img-top" alt="..."></a>
+                        <div class="card-body">
+                          <h5 class="card-title">{{book.name}}</h5>
+                          <p class="card-text">RS.{{book.price}}</p>
+                          <a href="#" class="btn btn-primary">Add to cart</a>
+                        </div>
+                      </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-    </div>
+    
 </div>
 <!-- feature product -->
 
