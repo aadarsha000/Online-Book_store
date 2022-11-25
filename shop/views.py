@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Book, Category
 # Create your views here.
 def index(request):
@@ -16,3 +16,12 @@ def bookdetail(request, id, slug):
         'book':book,
     }
     return render(request, 'shop/bookdetail.html', context)
+
+def bookCategory(request, id):
+    books = get_list_or_404(Book, category=id)
+    categories = Category.objects.all()
+    context={
+        'books':books,
+        'categories':categories,
+    }
+    return render(request, 'shop/category.html', context)
