@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Cart detail</title>
+{% endblock title %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Book</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Remove</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+                <tr>
+                    <td><img src="{{ product.image.url }}" class="img-fluid"></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form action="{% url "cart:cart_remove" product.id %}" method="post">
+                            <input type="submit" class="btn btn-primary" value="Remove">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td>Rs{{ item.price }}</td>
+                    <td>Rs{{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">Rs{{ cart.get_total_price }}</td>
+        </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="{% url 'cart:checkout' %}">Checkout</a>
+{% endblock content %}

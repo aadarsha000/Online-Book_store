@@ -3,6 +3,6 @@ from .models import Profile
 # Register your models here.
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ["user", "first_name", "last_name", "address"]
+    list_display = ["first_name", "last_name", "birth_date", "address"]
 
 admin.site.register(Profile, ProfileAdmin)

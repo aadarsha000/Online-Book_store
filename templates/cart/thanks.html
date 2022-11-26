@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Thanks</title>
+{% endblock title %}
+
+{% block content %}
+<h3>Thank you your order has been placed </h3>
+<a href="{% url 'shop:index' %}"> continue shopping</a>
+{% endblock content %}

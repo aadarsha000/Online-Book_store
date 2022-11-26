@@ -19,7 +19,11 @@
             <p>Edition: {{book.edition}}</p>
             <p>Published date: {{book.published_date}}</p>
             <p>Updated date: {{book.update_date}}</p>
-            <a href="#" class="btn btn-primary">Add to cart</a>
+            <form action="{% url "cart:cart_add" book.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Add to cart">
+            </form>
         </div>
     
     </div>

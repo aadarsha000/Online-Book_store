@@ -7,7 +7,7 @@
 
 {% block content %}
   <!-- nav -->
-  <div class="row m-auto hero">
+  <div class="row m-auto hero mt-1">
     <div class="col-lg-4 col-12">
         <ul class="list-group">
             <li class="list-group-item"><h4>Category</h3></li>
@@ -41,7 +41,11 @@
                         <div class="card-body">
                           <h5 class="card-title">{{book.name}}</h5>
                           <p class="card-text">RS.{{book.price}}</p>
-                          <a href="#" class="btn btn-primary">Add to cart</a>
+                          <form action="{% url "cart:cart_add" book.id %}" method="post">
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <input class="btn btn-primary" type="submit" value="Add to cart">
+                           </form>
                         </div>
                       </div>
                 </div>
