@@ -6,6 +6,7 @@ from .models import Profile
 
 # Create your views here.
 
+# user registration
 def usersignup(request):
     context={}
     if request.method=="POST":
@@ -22,6 +23,7 @@ def usersignup(request):
     return render(request, "account/signup.html", context)
 
 
+# User login
 def userLogin(request):
     if request.method == "POST":
         form = UserLoginForm(request, data=request.POST)
